@@ -1,0 +1,54 @@
+<ng-container *ngIf="data$ | async as data">
+  <nav class="navbar navbar-light">
+    <div class="container">
+      <a routerLink="/" class="navbar-brand">medium</a>
+      <ul class="nav navbar-nav pull-xs-right">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link">Home</a>
+        </li>
+        <ng-container *ngIf="data.currentUser">
+          <li class="nav-item">
+            <a routerLink="/articles/new" class="nav-link">
+              <i class="ion-compose"></i>
+              &nbsp; New Post
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/settings" class="nav-link">
+              <i class="ion-gear-a"></i>
+              &nbsp; Settings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/profile', data.currentUser.username]" class="nav-link user-profile">
+<!--              <img class="user-pic" ngSrc="data.currentUser.image" fill/>-->
+              <ng-container *ngIf="data.currentUser.image; else avatarFallback">
+                <img class="user-pic-custom" [src]="data.currentUser.image" alt="User Picture"/>
+              </ng-container>
+              <ng-template #avatarFallback>
+                <div class="avatar-fallback">
+                  {{data.currentUser.username}}
+                </div>
+              </ng-template>
+              <span class="username">
+                {{ data.currentUser.username }}
+              </span>
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="data.currentUser === null">
+          <li class="nav-item">
+            <a routerLink="/login" class="nav-link">
+              Sign in
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/register" class="nav-link">
+              Sign up
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
+</ng-container>
