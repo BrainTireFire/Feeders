@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Store} from "@ngrx/store";
 import {authAuctions} from "../../store/action";
@@ -25,7 +25,8 @@ import {
     NgIf,
     BackendErrorMessagesComponent
   ],
-  standalone: true
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterComponent {
   form = this.fb.nonNullable.group({

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {Store} from "@ngrx/store";
 import {selectCurrentUser} from "../../../auth/store/reducers";
@@ -10,7 +10,8 @@ import {RouterLink} from "@angular/router";
   standalone: true,
   imports: [CommonModule, RouterLink, NgOptimizedImage],
   templateUrl: './topBar.component.html',
-  styleUrls: ['./topBar.component.css']
+  styleUrls: ['./topBar.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopBarComponent {
   data$ = combineLatest({
