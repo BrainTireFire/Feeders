@@ -3,7 +3,7 @@ import {BackendErrorsInterface} from "../../types/backendErrors.interface";
 import {CommonModule} from "@angular/common";
 
 @Component({
-  selector: 'api-backend-error-messages',
+  selector: 'app-backend-error-messages',
   templateUrl: './backendErrorMessages.component.html',
   imports: [
     CommonModule
