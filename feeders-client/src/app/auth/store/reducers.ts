@@ -70,6 +70,11 @@ const authFeature = createFeature({
       isLoading: false,
       currentUser: null
     })),
+
+    on(authAuctions.updateCurrentUserSuccess, (state, action) => ({
+      ...state,
+      currentUser: action.currentUser
+    })),
   )
 });
 

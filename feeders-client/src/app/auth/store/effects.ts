@@ -109,3 +109,22 @@ export const redirectAfterLoginEffect = createEffect((
   },
   {functional: true, dispatch: false}
 );
+
+export const updateCurrentUserEffect = createEffect((
+  actions$ = inject(Actions),
+  authService = inject(AuthService)
+) => {
+  return actions$.pipe(
+    ofType(authAuctions.updateCurrentUser),
+    switchMap(({currentUserRequest}) => {
+      return authService.updateCurrentUser(currentUserRequest).pipe(
+        map(currentUser => {
+          return authAuctions.updateCurrentUserSuccess({currentUser});
+        }),
+        catchError((errorResponse: HttpErrorResponse) => {
+          return of(authAuctions.updateCurrentUserFailure({errors: errorResponse.error.errors}));
+        })
+      );
+    }),
+  );
+}, {functional: true});
