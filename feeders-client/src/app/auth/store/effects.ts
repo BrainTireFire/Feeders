@@ -128,3 +128,17 @@ export const updateCurrentUserEffect = createEffect((
     }),
   );
 }, {functional: true});
+
+export const logoutEffect = createEffect((
+  actions$ = inject(Actions),
+  router = inject(Router),
+  persistService = inject(PersistenceService)
+) => {
+  return actions$.pipe(
+    ofType(authAuctions.logout),
+    tap(() => {
+      persistService.set('accessToken', '');
+      router.navigateByUrl('/');
+    })
+  );
+}, {functional: true, dispatch: false});

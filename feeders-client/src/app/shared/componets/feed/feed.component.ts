@@ -11,6 +11,7 @@ import {environment} from "../../../../environments/environment.development";
 import {PaginationComponent} from "../pagination/pagination.component";
 import queryString from 'query-string';
 import {TagListComponent} from "../tagList/tagList.component";
+import {AddToFavoritesComponent} from "../addToFavorites/addToFavorites.component";
 
 @Component({
   selector: 'app-feed',
@@ -21,12 +22,13 @@ import {TagListComponent} from "../tagList/tagList.component";
     ErrorMessageComponent,
     LoadingComponent,
     PaginationComponent,
-    TagListComponent
+    TagListComponent,
+    AddToFavoritesComponent
   ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FeedComponents implements OnInit, OnChanges {
+export class FeedComponent implements OnInit, OnChanges {
   @Input() apiUrl: string = '';
 
   //temp because backend has not correct images

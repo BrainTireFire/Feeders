@@ -17,7 +17,14 @@
             {{article.createdAt | date:'medium'}}
           </span>
         </div>
-        <div class="pull-xs-right">ADD TO FAVORITE</div>
+        <div class="pull-xs-right">
+          <app-add-to-favorites
+            [isFavorited]="article.favorited"
+            [articleSlug]="article.slug"
+            [favoritesCount]="article.favoritesCount"
+          >
+          </app-add-to-favorites>
+        </div>
       </div>
       <a [routerLink]="['/articles', article.slug]" class="preview-link">
         <h1>{{article.title}}</h1>

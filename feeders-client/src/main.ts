@@ -16,6 +16,8 @@ import {popularTagsFeatureKey, popularTagsReducer} from "./app/shared/componets/
 import * as authEffects from "./app/auth/store/effects";
 import * as feedEffects from "./app/shared/componets/feed/store/effects";
 import * as popularTagsEffects from "./app/shared/componets/popularTags/store/effects";
+import * as addToFavoritesEffects from "./app/shared/componets/addToFavorites/store/effects";
+import {AddToFavoritesService} from "./app/shared/componets/addToFavorites/services/addToFavorites.service";
 
 bootstrapApplication(AppComponent,
   {
@@ -31,13 +33,14 @@ bootstrapApplication(AppComponent,
       provideState(authFeatureKey, authReduce),
       provideState(feedFeatureKey, feedReducer),
       provideState(popularTagsFeatureKey, popularTagsReducer),
-      provideEffects(authEffects, feedEffects, popularTagsEffects),
+      provideEffects(authEffects, feedEffects, popularTagsEffects, addToFavoritesEffects),
       provideStoreDevtools({
         maxAge: 25,
         logOnly: !isDevMode(),
         autoPause: true,
         trace: false,
         traceLimit: 75
-      })
+      }),
+      AddToFavoritesService
     ]
   }).catch((err) => console.error(err));

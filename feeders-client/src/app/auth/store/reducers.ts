@@ -75,6 +75,12 @@ const authFeature = createFeature({
       ...state,
       currentUser: action.currentUser
     })),
+
+    on(authAuctions.logout, (state) => ({
+      ...state,
+      ...initialState,
+      currentUser: null
+    })),
   )
 });
 

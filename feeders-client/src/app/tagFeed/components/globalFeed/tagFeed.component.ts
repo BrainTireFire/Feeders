@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {FeedComponents} from "../../../shared/componets/feed/feed.components";
+import {FeedComponent} from "../../../shared/componets/feed/feed.component";
 import {BannerComponent} from "../../../shared/componets/banner/banner.component";
 import {PopularTagsComponent} from "../../../shared/componets/popularTags/popularTags.component";
 import {FeedTogglerComponent} from "../../../shared/componets/feedToggler/feedToggler.component";
@@ -12,7 +12,7 @@ import {ActivatedRoute, Params} from "@angular/router";
   styleUrls: ['./tagFeed.component.css'],
   imports: [
     CommonModule,
-    FeedComponents,
+    FeedComponent,
     BannerComponent,
     PopularTagsComponent,
     FeedTogglerComponent
